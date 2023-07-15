@@ -402,3 +402,17 @@
     
 </div>
 @endsection
+
+{{-- Dynamic seript for chart --}}
+
+
+@push('script')
+<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+@endpush
+
+
+{{-- Dynamic seript for chart --}}
+
+@push('styles')
+    
+@endpush
