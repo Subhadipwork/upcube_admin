@@ -38,6 +38,9 @@
                   @error('password')
                   <span class="text-danger">{{ $message }}</span>
                   @enderror
+                  @error('error')
+                  <span class="text-danger">{{ $message }}</span>
+                  @enderror
                   <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                 </div>
                 <div class="form-group">
@@ -47,7 +50,7 @@
                   <div class="w-50">
                     <label class="checkbox-wrap checkbox-primary">
                       Remember Me
-                      <input type="checkbox" name="remember" checked>
+                      <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                       <span class="checkmark"></span>
                     </label>
                   </div>

@@ -39,6 +39,7 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            'remember_me' => true,
         ],
         'admin' => [
             'driver' => 'session',
