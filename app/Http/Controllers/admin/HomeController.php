@@ -16,15 +16,13 @@ class HomeController extends Controller
     
 
 
-    public function logout(Request $request)
-    {
-        Auth::guard('admin')->logout();
+public function logout(Request $request)
+{
+    auth('admin')->logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect()->route('admin.login');
-    }
+    return redirect()->route('admin.login');
+}
    
 }

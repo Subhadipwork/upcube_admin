@@ -3,7 +3,11 @@
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\CategoryController;
+// use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +37,22 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
         Route::get('/admin_profile', [ProfileController::class, 'profile'])->name('admin.admin_profile');
         Route::get('/logout', [HomeController::class, 'logout'])->name('admin.logout');
+
+        // category round
+        Route::resource('category', CategoryController::class);
+        Route::post('category/updateStatus', [CategoryController::class, 'updateStatus'])->name('category.updateStatus');
+
+
+        Route::get('/getSlug',function(Request $request){
+            $slug = '';
+            if (!empty($request->name)) {
+                $slug = Str::slug($request->name);
+            }
+            return response()->json([
+                'status' => true,
+                'slug' => $slug
+            ]);
+        })->name('getSlug');
+        
     });
 });
