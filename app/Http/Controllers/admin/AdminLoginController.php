@@ -9,7 +9,9 @@ use App\Events\UserLoggedIn;
 use Illuminate\Support\Facades\Validator;
 
 class AdminLoginController extends Controller
-{
+{   
+    
+
     public function index()
     {
         return view('admin.login');
@@ -51,10 +53,15 @@ public function authenticate(Request $request)
         ->withInput($request->only('email'));
 }
 
+    public function redirect(){
+        return redirect()->route('admin.login');
+    }
+
     protected function authenticated(Request $request, $user)
     {
         event(new UserLoggedIn($user));
     }
+
 
 
 }

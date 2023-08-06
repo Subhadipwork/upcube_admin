@@ -28,7 +28,7 @@
               <form action="{{ route('admin.login.authenticate') }}" method="POST" class="signin-form">
                 @csrf
                 <div class="form-group">
-                  <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required >
+                  <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email', Cookie::get('email')) }}" required >
                   @error('email')
                   <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -69,6 +69,20 @@
     <script src="{{ asset('admin_login_assets/js/popper.js') }}"></script>
     <script src="{{ asset('admin_login_assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin_login_assets/js/main.js') }}"></script>
+    <script>
+      // get email from local storage
+      document.getElementById('email').value = localStorage.getItem('email');
+    
+      document.querySelector('form').addEventListener('submit', function() {
+        if (document.getElementById('remember').checked) {
+          // save email to local storage
+          localStorage.setItem('email', document.getElementById('email').value);
+        } else {
+          // clear email from local storage
+          localStorage.removeItem('email');
+        }
+      });
+    </script>
 
   </body>
 </html>

@@ -7,6 +7,10 @@ use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\TempImage;
+// use Image;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -15,9 +19,10 @@ class CategoryController extends Controller
  */
 public function index()
 {
-    $categories = Category::latest()->paginate(10);
+    $categories = Category::latest()->paginate(30);
+    // $categories = Category::all();
     
-    return view('admin.layouts.category.list', compact('categories'));
+    return view('admin.category.list', compact('categories'));
 }
 
     /**
@@ -25,36 +30,72 @@ public function index()
      */
     public function create()
     {
-        return view('admin.layouts.category.category');
+        return view('admin.category.category');
     }
 
-public function store(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|unique:categories',
-        'slug' => 'required|unique:categories',
-    ]);
 
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator);
-    }else{
+   
 
-    $category = new Category();
-    $category->name = $request->name;
-    $category->slug = $request->slug;
-    $category->save();
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories',
+            'slug' => 'required|unique:categories',
+            'image' => 'required',
+        ]);
     
-    return redirect()->back()->with('success', 'Category added successfully!');
+        $category = new Category();
+        $category->name = $validatedData['name'];
+        $category->slug = $validatedData['slug'];
+        $category->save();
     
+        if (!empty($validatedData['image'])) {
+            $tempImage = TempImage::find($validatedData['image']);
+    
+            if ($tempImage) {
+                $ext = pathinfo($tempImage->name, PATHINFO_EXTENSION);
+                $newImageName = $category->id . '.' . $ext;
+                $sourcePath = public_path('/temp_images/' . $tempImage->name);
+                $destinationDir = public_path('/uploaded/category/');
+                $destinationPath = $destinationDir . $newImageName;
+    
+                // Ensure the destination directory exists
+                if (!File::exists($destinationDir)) {
+                    File::makeDirectory($destinationDir, 0755, true);
+                }
+    
+                if (File::copy($sourcePath, $destinationPath)) {
+                    $category->image = $newImageName;
+                    $category->save();
+    
+                    // Create thumbnail
+                    $thumbnailDir = public_path('/uploaded/category/thumbnail/');
+                    $thumbnailPath = $thumbnailDir . $newImageName;
+    
+                    if (!File::exists($thumbnailDir)) {
+                        File::makeDirectory($thumbnailDir, 0755, true);
+                    }
+    
+                    $img = Image::make($destinationPath);
+                    $img->resize(300, 300);
+                    $img->save($thumbnailPath);
+                } else {
+                    // Log an error or handle the situation if the image could not be copied
+                }
+            }
+        }
+    
+        return response()->json(['message' => 'Category added successfully!', 'category' => $category]);
     }
-}
+    
+    
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        return view('admin.layouts.category.list');
+        return view('admin.category.list');
     }
 
     /**
@@ -62,7 +103,11 @@ public function store(Request $request)
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        // dd($category);
+
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -70,7 +115,18 @@ public function store(Request $request)
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories',
+            'slug' => 'required|unique:categories,slug,'.$category->id.',id',
+            'image' => 'required',
+        ]);
+      
+        $category->name = $validatedData['name'];
+        $category->slug = $validatedData['slug'];
+        $category->save();
+
+
     }
 
     /**
@@ -78,7 +134,9 @@ public function store(Request $request)
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('admin.category.list')->with('message', 'Category deleted successfully!');
     }
 public function updateStatus(Request $request)
 {
@@ -91,6 +149,11 @@ public function updateStatus(Request $request)
 
     $category->update(['status' => $request->status]);
 
-    return response()->json(['success' => 'Category status updated successfully']);
+    return response()->json(
+        [
+            'status' => true,
+            'message' => 'Status updated successfully!',
+        ]
+    );
 }
 }
