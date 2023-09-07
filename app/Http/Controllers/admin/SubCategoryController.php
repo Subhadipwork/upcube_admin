@@ -40,9 +40,9 @@ class SubCategoryController extends Controller
     
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $filename = 'sub_cate'.time() . '.' . $file->getClientOriginalExtension();
             $filePath = $request->file('image')->storeAs('public/uploaded/subcategory', $filename);
-            $subcategory->image = $filePath;
+            $subcategory->image = $filename;
         }
     
         if($subcategory->save()) {
@@ -90,7 +90,7 @@ class SubCategoryController extends Controller
             Storage::delete('public/uploaded/subcategory/' . $subcategory->image);
             
             // Store the new image
-            $filename = time() . '.' . $request->image->getClientOriginalExtension();
+            $filename = 'sub_cate'.time() . '.' . $request->image->getClientOriginalExtension();
             $filepath = $request->image->storeAs('public/uploaded/subcategory', $filename);
     
             $subcategory->image = $filename;
@@ -107,7 +107,9 @@ class SubCategoryController extends Controller
 
 
     public function destroy($id){
-        $subcategory = Subcategory::findorFail($id);
+        
+         $subcategory = Subcategory::findorFail($id);
+
         $subcategory->delete();
         return redirect()->back()->with('success', 'Subcategory deleted successfully');
     }

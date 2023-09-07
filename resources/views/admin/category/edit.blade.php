@@ -28,7 +28,8 @@
                             <a href="{{ route('category.index') }}" class="btn btn-primary" style="margin-bottom: 10px; margin-right: 10px;text-align: right;">Back</a>
                         </div> --}}
 
-                        <form action="{{ route('category.update', $category->id) }}" method="POST" id="categoryForm">
+                        <form action="{{ route('category.update', $category->id) }}" method="PUT" id="categoryForm">
+                            @method('PUT')
                             @csrf
                             <div class="mb-3 row">
                                 <label for="category-name" class="col-sm-2 col-form-label">Category Name</label>

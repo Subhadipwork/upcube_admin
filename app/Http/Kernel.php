@@ -50,7 +50,7 @@ class Kernel extends HttpKernel
      *
      * Aliases may be used instead of class names to conveniently assign middleware to routes and groups.
      *
-     * @var array<string, class-string|string>
+     * @var array<string, class-string|string>x
      */
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,

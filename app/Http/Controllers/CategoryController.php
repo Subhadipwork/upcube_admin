@@ -117,14 +117,50 @@ public function index()
     {
         $category = Category::findOrFail($id);
         $validatedData = $request->validate([
-            'name' => 'required|unique:categories',
-            'slug' => 'required|unique:categories,slug,'.$category->id.',id',
+            'name' => 'required|unique:categories,name,'.$category->id,
+            'slug' => 'required|unique:categories,slug,'.$category->id,
             'image' => 'required',
         ]);
       
         $category->name = $validatedData['name'];
         $category->slug = $validatedData['slug'];
-        $category->save();
+
+        if (!empty($validatedData['image'])) {
+            $tempImage = TempImage::find($validatedData['image']);
+    
+            if ($tempImage) {
+                $ext = pathinfo($tempImage->name, PATHINFO_EXTENSION);
+                $newImageName = $category->id . '.' . $ext;
+                $sourcePath = public_path('/temp_images/' . $tempImage->name);
+                $destinationDir = public_path('/uploaded/category/');
+                $destinationPath = $destinationDir . $newImageName;
+    
+                // Ensure the destination directory exists
+                if (!File::exists($destinationDir)) {
+                    File::makeDirectory($destinationDir, 0755, true);
+                }
+    
+                if (File::copy($sourcePath, $destinationPath)) {
+                    $category->image = $newImageName;
+                    $category->save();
+    
+                    // Create thumbnail
+                    $thumbnailDir = public_path('/uploaded/category/thumbnail/');
+                    $thumbnailPath = $thumbnailDir . $newImageName;
+    
+                    if (!File::exists($thumbnailDir)) {
+                        File::makeDirectory($thumbnailDir, 0755, true);
+                    }
+    
+                    $img = Image::make($destinationPath);
+                    $img->resize(300, 300);
+                    $img->save($thumbnailPath);
+                } else {
+                    // Log an error or handle the situation if the image could not be copied
+                }
+            }
+        }
+        return response()->json(['message' => 'Category Updated successfully!', 'category' => $category]);
 
 
     }
@@ -140,15 +176,29 @@ public function index()
     }
 public function updateStatus(Request $request)
 {
+    
     $request->validate([
         'id' => 'required|integer',
         'status' => 'required|boolean',
     ]);
 
-    $category = Category::findOrFail($request->id);
+    $category = Category::find($request->id);
+    if (!$category) {
+        return response()->json([
+            'status' => false,
+            'message' => 'Category not found!'
+        ], 404);
+    }
+    if ($request->type == 'status') {
+        $category->status = !$category->status;
+    } elseif ($request->type == 'top_category') {
+        $category->top_category = $category->top_category === '1' ? '0' : '1';
 
-    $category->update(['status' => $request->status]);
+    }
 
+    $category->save();
+   
+    
     return response()->json(
         [
             'status' => true,
@@ -156,4 +206,6 @@ public function updateStatus(Request $request)
         ]
     );
 }
+
+
 }

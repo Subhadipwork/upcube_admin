@@ -12,6 +12,14 @@ class Category extends Model
     protected $fillable = [
         'name', 'slug', 'status' // Add 'status' to the $fillable array
     ];
+
+    // In Category model
+public function products()
+{
+    return $this->hasMany(Product::class);
+}
+
+
     public function subcategory(){
         return $this->hasMany(Subcategory::class);
     }

@@ -42,6 +42,7 @@
                                 <th>Category Slug</th>
                                 <th>Category Image</th>
                                 <th>Status</th>
+                                <th>Top_category</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
@@ -63,14 +64,14 @@
                                         
 
                                         <td>
-                                            @if ($category->status == 1)
-                                                <input type="checkbox" class="status-toggle" data-category-id="{{ $category->id }}" id="square-switch{{ $category->id }}" switch="none" checked>
-                                                <label for="square-switch{{ $category->id }}" data-on-label="Show" data-off-label="Hide"></label>
-                                            @else
-                                                <input type="checkbox" class="status-toggle" data-category-id="{{ $category->id }}" id="square-switch{{ $category->id }}" switch="none">
-                                                <label for="square-switch{{ $category->id }}" data-on-label="Show" data-off-label="Hide"></label>
-                                            @endif
+                                            <input type="checkbox" class="status-toggle" data-category-id="{{ $category->id }}" data-type="status" id="status-switch{{ $category->id }}" switch="none" {{ $category->status == 1 ? 'checked' : '' }}>
+                                            <label for="status-switch{{ $category->id }}" data-on-label="Show" data-off-label="Hide"></label>
                                         </td>
+                                        <td>
+                                            <input type="checkbox" class="status-toggle" data-category-id="{{ $category->id }}" data-type="top_category" id="top-category-switch{{ $category->id }}" switch="none" {{ $category->top_category == 1 ? 'checked' : '' }}>
+                                            <label for="top-category-switch{{ $category->id }}" data-on-label="Show" data-off-label="Hide"></label>
+                                        </td>
+                                            
                                         <td>
                                             <a href="{{ route('category.destroy', $category->id) }}" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
@@ -117,18 +118,19 @@
         $('.status-toggle').change(function() {
             var categoryId = $(this).data('category-id');
             var status = this.checked ? 1 : 0;
+            var type = $(this).data('type');
             $.ajax({
                 url: "{{ route('category.updateStatus') }}",
                 type: "POST",
                 data: {
                     id: categoryId,
-                    status: status
+                    status: status,
+                    type: type
                 },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(data) {
-                    // Handle the successful response if needed
                     if (data.status == true) {
                         toastr["success"]("Category status updated");
                         toastr.options = {
@@ -162,8 +164,6 @@
         });
     });
 </script>
-
-
 
    @endPushOnce
 

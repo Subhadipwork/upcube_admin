@@ -9,6 +9,64 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('admin_login_assets/css/style.css') }}">
+    <style>
+    /* Body Background */
+body.img.js-fullheight {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* Heading Styles */
+.heading-section {
+    color: #2c3e50; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    font-size: 42px;
+}
+
+/* Login Form Styling */
+.login-wrap {
+    width: 100%; /* Set to the desired width; 80% will make it relatively large */
+    max-width: 700px; /* Maximum width limit to ensure it doesn't become too large on big screens */
+    margin: 0 auto; /* Centering the box if the width is less than 100% */
+    padding: 40px 50px; /* Increased padding */
+    border-radius: 35px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.login-wrap:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+
+.signin-form .form-control {
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.signin-form .btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.form-group .checkbox-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.form-group .checkbox-wrap .checkmark {
+    margin-left: 5px;
+}
+
+.w-50 a {
+    text-decoration: underline;
+}
+
+
+    </style>
     {{-- https://source.unsplash.com/featured/3840x2160 --}}
 
   </head>
@@ -18,7 +76,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-6 text-center mb-5">
-            <h2 class="heading-section">BitCrypto</h2>
+            <h2 class="heading-section">CHaA</h2>
           </div>
         </div>
         <div class="row justify-content-center">

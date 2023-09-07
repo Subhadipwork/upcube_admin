@@ -163,10 +163,10 @@
                 }
             });
         },
-        url: "{{ route('tempimage.create') }}", // Replace 'upload.url' with your actual upload route or URL
+        url: "{{ route('tempimage.create') }}", 
         maxFilesize: 5,
         paramName: 'image',
-        acceptedFiles: 'image/jpg,image/jpeg,image/png',
+        acceptedFiles: 'image/jpg,image/jpeg,image/png,webp',
         addRemoveLinks: true,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

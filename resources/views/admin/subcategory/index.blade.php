@@ -54,7 +54,8 @@
                                 <td>{{ $subcategory->category->name }}</td> <!-- Assuming you have a 'category' relationship in the Subcategory model -->
                                 <td>{{ $subcategory->name }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/uploaded/subcategory/'.$subcategory->image) }}" alt="{{ $subcategory->name }}" style="max-width: 200px; max-height: 200px;">
+                                    <img src="{{asset('storage/uploaded/subcategory/'.$subcategory->image)
+                                }}" alt="{{ $subcategory->name }}" style="max-width: 200px; max-height: 200px;">
                                 </td>
                                 <td>
                                     <a href="{{ route('subcategory.status', $subcategory->id)}}" class="btn {{ $subcategory->status == 1 ? 'btn-success' : 'btn-danger' }}">

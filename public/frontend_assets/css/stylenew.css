@@ -1,0 +1,228 @@
+
+/* privacy policy, terms & conditions, returns page start */
+
+#privacy{
+    width: 100%;
+    height: auto;
+    padding: 30px 50px;
+}
+.privacy_top{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.privacyhead{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 30px;
+}
+.privacypara{
+    font-size: 16px;
+    line-height: 30px;
+}
+.privacy_points{
+    margin-bottom: 18px;
+}
+.pointhead{
+    margin-bottom: 8px;
+    font-size: 23px;
+    font-weight: 700;
+}
+.privacy_points p{
+    font-size: 16px;
+    line-height: 30px;
+}
+.privacy_points ul{
+    padding-left: 20px;
+}
+.privacy_points ul li{
+    line-height: 30px;
+    font-size: 16px;
+}
+.supportmail{
+    text-decoration: underline;
+}
+
+/* privacy policy, terms & conditions, returns page end */
+
+/* responsive */
+
+@media (max-width: 991px){
+    #privacy{
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 767px){
+    #privacy{
+        padding: 10px 0px;
+    }
+    .privacyhead{
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    .pointhead{
+        font-size: 20px;
+        line-height: 25px;
+    }
+}
+
+@media (max-width: 575px){
+    .privacyhead{
+        font-size: 27px;
+        line-height: 30px;
+    }
+    .privacypara{
+        line-height: 25px;
+    }
+    .privacy_points{
+        margin-bottom: 14px;
+    }
+    .privacy_top{
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 479px){
+    .privacyhead {
+        font-size: 22px;
+        line-height: 22px;
+    }
+    .privacypara{
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .privacy_points p{
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .pointhead{
+        font-size: 17px;
+        line-height: 25px;
+    }
+    .privacy_points ul li{
+        line-height: 22px;
+        font-size: 14px;
+    }
+}
+
+/* orders & shipping page start */
+
+#shipping{
+    width: 100%;
+    height: auto;
+    padding: 30px 50px;
+}
+.shippinghead{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 30px;
+}
+.shippingpara{
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 15px;
+}
+.shippingpara i{
+    color: #5a5e9b;
+    margin-right: 7px;
+    font-size: 20px;
+}
+
+/* responsive */
+
+@media (max-width: 991px){
+    #shipping{
+        padding: 20px 10px;
+    }
+    .shippinghead{
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 767px){
+    #shipping{
+        padding: 10px 0px;
+    }
+    .shippinghead{
+        font-size: 28px;
+        margin-bottom: 15px;
+        line-height: 35px;
+    }
+    .shippingpara{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 479px){
+    .shippinghead{
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+}
+
+/* orders & shipping page end */
+
+/* user section in header */
+
+.user .dropdown-menu{
+    left: -50px;
+    width: 120px;
+    min-width: 120px;
+}
+
+.user-toggle{
+    vertical-align: baseline;
+    padding: 5px;
+    background: none;
+}
+.user-toggle:focus{
+    box-shadow: none !important;
+}
+.user .dropdown-item {
+    padding: 4px 10px;
+}
+
+.user .dropdown-item i {
+    font-size: 12px;
+}
+
+.user .dropdown-item.active, .user .dropdown-item:active{
+    background-color: #5a5e9b;
+}
+.user-toggle::after{
+    content: "\f078";
+    font-family: fontawesome;
+    color: #5a5e9b;
+    margin-left: 0;
+    border: none;
+    display: none;
+}
+.navbar .container-fluid{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+/* responsive */
+
+@media (max-width: 575px){
+    .user .dropdown-menu{
+        left: auto;
+        right: 0;
+    }
+    .user-toggle::after{
+        font-size: 12px;
+    }
+    .user-toggle{
+        padding: 0px;
+    }
+}
+
+
+
+
+/* jay */

@@ -6,7 +6,7 @@
        <script src="{{ asset('admin_assets/libs/node-waves/waves.min.js') }}"></script>
      
         <!-- apexcharts -->
-       {{-- <script src="{{ asset('admin_assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
+       <script src="{{ asset('admin_assets/libs/apexcharts/apexcharts.min.js') }}"></script>
      
        <!-- jquery.vectormap map -->
        {{-- <script src="{{ asset('admin_assets/libs/jsvectormap/jsvectormap.min.js') }}"></script>

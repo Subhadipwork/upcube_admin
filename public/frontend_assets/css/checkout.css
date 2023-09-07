@@ -1,0 +1,379 @@
+/*body {*/
+/*  background-color: rgb(212, 196, 215);*/
+/*}*/
+
+.logoCFig {
+  margin: 0 0 15px 0;
+  width: 129px;
+  height: 48px;
+}
+
+.logoCFig img {
+  width: 100%;
+  height: 100%;
+}
+
+.allSpanDiv {
+  margin-bottom: 20px;
+}
+
+.allSpanDiv span {
+  font-size: 13px;
+}
+
+.allSpanDiv i {
+  color: #000000;
+  font-size: 12px;
+}
+
+.cartSmall {
+  color: rgba(255, 103, 129, 1);
+}
+
+.infoSmall {
+  font-weight: 700;
+}
+
+.conHead {
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.nameMailP {
+  font-weight: 400;
+  margin: 0 0 7px 0;
+}
+
+.logOutAn {
+  color: rgba(255, 103, 129, 1);
+  text-decoration: underline;
+}
+
+.logOutAn:hover {
+  color: rgba(255, 103, 129, 0.7);
+  text-decoration-color: rgba(255, 103, 129, 0.7);
+}
+
+.logOutDiv {
+  margin-bottom: 10px;
+}
+
+.contactDiv {
+  margin-bottom: 20px;
+}
+
+.shopHead {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.chkOutFrm {
+  margin-top: 10px;
+}
+
+.chkInp {
+  width: 100%;
+  background-color: transparent;
+  padding: 15px 8px 7px 8px;
+  border-radius: 5px;
+  outline: 0;
+  border: 1px solid #8f8c8c;
+  transition-property: all;
+  transition-duration: 100ms;
+}
+
+.chkInp:focus {
+  border: 0;
+  box-shadow: 0 0 1px 2px rgba(255, 103, 129, 1);
+}
+
+.formInpDivs {
+  margin-bottom: 10px;
+}
+
+.chkHalfInp {
+  width: 49%;
+  background-color: transparent;
+  padding: 8px 10px;
+  border-radius: 5px;
+  outline: 0;
+  border: 1px solid #8f8c8c;
+  transition-property: all;
+  transition-duration: 500ms;
+}
+
+.chkHalfInp:focus {
+  border: 0;
+  box-shadow: 0 0 1px 2px rgba(255, 103, 129, 1);
+}
+
+.formHalfInpDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chkFullInp {
+  width: 100%;
+  background-color: transparent;
+  padding: 8px 10px;
+  border-radius: 5px;
+  outline: 0;
+  border: 1px solid #8f8c8c;
+  transition-property: all;
+  transition-duration: 100ms;
+}
+
+.chkFullInp:focus {
+  border: 0;
+  box-shadow: 0 0 1px 2px rgba(255, 103, 129, 1);
+}
+
+.chkThreeInp {
+  width: 32%;
+  background-color: transparent;
+  padding: 8px 10px;
+  border-radius: 5px;
+  outline: 0;
+  border: 1px solid #8f8c8c;
+  transition-property: all;
+  transition-duration: 100ms;
+}
+
+.chkThreeInp:focus {
+  border: 0;
+  box-shadow: 0 0 1px 2px rgba(255, 103, 129, 1);
+}
+
+.formIconDiv,
+.formSelectDiv {
+  position: relative;
+}
+
+.formInpIcon {
+  font-size: 16px;
+  color: #4a4949;
+  position: absolute;
+  top: 13px;
+  right: 10px;
+}
+
+.selectBefore {
+  margin: 0;
+  font-size: 12px;
+  color: #4a4949;
+  position: absolute;
+  top: 1px;
+  left: 14px;
+}
+
+.formIconDiv input {
+  padding-right: 30px;
+}
+
+.shipBtn {
+  width: 200px;
+  height: 65px;
+  border: 1px solid rgba(254, 0, 87, 0.6);
+  border-radius: 5px;
+  background-color: rgba(254, 0, 87, 0.6);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.shipBtn:hover {
+  background-color: rgba(254, 0, 87, 1);
+  border: 1px solid rgba(254, 0, 87, 1);
+}
+
+.shipDivBtn {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.allChashaDiv {
+  margin-top: 40px;
+  border-top: 1px solid #4a494972;
+  padding-top: 8px;
+}
+
+.allChashaDiv p {
+  font-size: 12px;
+  color: #4a4949;
+  margin: 0;
+}
+
+.chkLeftDiv {
+  padding: 50px 40px 20px 0;
+  border-right: 1px solid #605e5e6d;
+}
+
+.papyaFig {
+  width: 64px;
+  height: 64px;
+  margin: 0 20px 0 0;
+  position: relative;
+}
+
+.papyaFig img {
+  width: 100%;
+  height: 100%;
+}
+
+.papyaSpan {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #707070;
+  border-radius: 50%;
+  padding: 0px 7px;
+  position: absolute;
+  top: -8px;
+  right: -4px;
+}
+
+.chaBold {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.payFigDiv {
+  display: flex;
+  align-items: center;
+}
+
+.mainPayDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rupeePara {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.chkRightDiv {
+  padding: 50px 0 20px 20px;
+}
+
+.disInp {
+  width: 80%;
+  background-color: transparent;
+  padding: 8px 10px;
+  border-radius: 5px;
+  outline: 0;
+  border: 1px solid #8f8c8c;
+  transition-property: all;
+  transition-duration: 100ms;
+}
+
+.disInp:focus {
+  border: 0;
+  box-shadow: 0 0 1px 2px rgba(255, 103, 129, 1);
+}
+
+.disAppBtn {
+  width: 16%;
+  padding: 8px 0;
+  color: #ffffff;
+  font-size: 16px;
+  border: 0;
+  border-radius: 5px;
+  background-color: rgba(179, 166, 182, 1);
+  transition-property: all;
+  transition-duration: 600ms;
+}
+
+.subPara {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.subRepee {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.calPara {
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.subDivPar {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .chkLeftDiv {
+    border: 0;
+  }
+
+  .conRowDiv {
+    flex-direction: column-reverse;
+  }
+
+  .chkLeftDiv {
+    padding: 50px 0 20px 0;
+  }
+
+  .chkRightDiv {
+    padding: 50px 0 20px 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .shipBtn {
+    width: 100%;
+  }
+
+  .chkLeftDiv {
+    padding: 50px 20px 20px 20px;
+  }
+
+  .chkRightDiv {
+    padding: 50px 20px 0 20px;
+  }
+
+  .allChashaDiv {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 479px){
+    .logoCFig {
+        width: 89px;
+        height: 30px;
+    }
+
+    .chkLeftDiv {
+        padding: 35px 20px 20px 20px;
+    }
+
+    .papyaFig {
+        width: 50px;
+        height: 50px;
+        margin: 0 10px 0 0;
+    }
+
+    .chaBold {
+        font-size: 12px;
+    }
+
+    .rupeePara {
+        font-size: 12px;
+    }
+
+    .disAppBtn {
+        padding: 12px 0;
+        font-size: 12px;
+    }
+}
